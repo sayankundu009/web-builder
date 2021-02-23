@@ -1,0 +1,16 @@
+:root{
+    --main: #df6b42;
+    --main-secondary: #fff;
+    --border: #e7e7e7;
+    --background: #fff;
+    --background-secondary: #F1F3F4;
+}
+.btn-main{
+    color: #fff !important;
+    background-color: var(--main) !important;
+    border-color: var(--main) !important;
+}
+.divider{
+    width: 100%;
+    border-bottom: 1px solid var(--border);
+}
