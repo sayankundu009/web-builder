@@ -1,5 +1,6 @@
 :root{
     --_main: #df6b42;
+    --_insert_preview: #df6b42;
 }
 
 html{
@@ -15,4 +16,16 @@ body{
 
 [editor-selected]{
     outline: 3px solid var(--_main);
+}
+
+[editor-insert-preview="inside"]{
+    border: 3px dashed var(--_insert_preview);
+}
+
+[editor-insert-preview="prepend"]{
+    border-top: 3px dashed var(--_insert_preview);
+}
+
+[editor-insert-preview="append"]{
+    border-bottom: 3px dashed var(--_insert_preview);
 }
