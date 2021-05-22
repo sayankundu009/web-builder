@@ -10,6 +10,7 @@ body{
     height: 100%;
 }
 
+/* Editor */
 [editor-outline]{
     outline: 3px dashed var(--_main);
 }
@@ -28,4 +29,11 @@ body{
 
 [editor-insert-preview="append"]{
     border-bottom: 3px dashed var(--_insert_preview);
+}
+
+/* Design */
+[builder-section]{
+    width: 100%;
+    height: 300px;
+    background: #fce7d9;
 }

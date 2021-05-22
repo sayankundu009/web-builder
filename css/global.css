@@ -5,11 +5,20 @@
     --background: #fff;
     --background-secondary: #F1F3F4;
 }
+
 .btn-main{
     color: #fff !important;
     background-color: var(--main) !important;
     border-color: var(--main) !important;
+    border-radius: 3px !important;
+    outline: none !important;
+    box-shadow: none !important;
 }
+
+.btn-main span{
+  vertical-align: middle;
+}
+
 .divider{
     width: 100%;
     border-bottom: 1px solid var(--border);

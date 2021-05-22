@@ -1339,7 +1339,7 @@ var app = (function () {
     	let projectname;
     	let t0;
     	let button0;
-    	let span;
+    	let span0;
     	let t1;
     	let div0;
     	let ul;
@@ -1347,8 +1347,12 @@ var app = (function () {
     	let button1;
     	let i0;
     	let t2;
+    	let span1;
+    	let t4;
     	let button2;
     	let i1;
+    	let t5;
+    	let span2;
     	let current;
     	projectname = new ProjectName({ $$inline: true });
 
@@ -1359,7 +1363,7 @@ var app = (function () {
     			create_component(projectname.$$.fragment);
     			t0 = space();
     			button0 = element("button");
-    			span = element("span");
+    			span0 = element("span");
     			t1 = space();
     			div0 = element("div");
     			ul = element("ul");
@@ -1367,10 +1371,16 @@ var app = (function () {
     			button1 = element("button");
     			i0 = element("i");
     			t2 = space();
+    			span1 = element("span");
+    			span1.textContent = "Download";
+    			t4 = space();
     			button2 = element("button");
     			i1 = element("i");
-    			attr_dev(span, "class", "navbar-toggler-icon");
-    			add_location(span, file$2, 8, 6, 370);
+    			t5 = space();
+    			span2 = element("span");
+    			span2.textContent = "Preview";
+    			attr_dev(span0, "class", "navbar-toggler-icon");
+    			add_location(span0, file$2, 8, 6, 370);
     			attr_dev(button0, "class", "navbar-toggler");
     			attr_dev(button0, "type", "button");
     			attr_dev(button0, "data-bs-toggle", "collapse");
@@ -1381,12 +1391,14 @@ var app = (function () {
     			add_location(button0, file$2, 7, 4, 184);
     			attr_dev(i0, "class", "bi bi-download");
     			add_location(i0, file$2, 13, 39, 597);
+    			add_location(span1, file$2, 13, 70, 628);
     			attr_dev(button1, "class", "btn btn-main");
     			add_location(button1, file$2, 13, 10, 568);
     			attr_dev(i1, "class", "bi bi-eye");
-    			add_location(i1, file$2, 14, 39, 677);
+    			add_location(i1, file$2, 14, 39, 699);
+    			add_location(span2, file$2, 14, 65, 725);
     			attr_dev(button2, "class", "btn btn-main");
-    			add_location(button2, file$2, 14, 10, 648);
+    			add_location(button2, file$2, 14, 10, 670);
     			attr_dev(li, "class", "nav-item");
     			add_location(li, file$2, 12, 8, 535);
     			attr_dev(ul, "class", "navbar-nav nav-left svelte-lu0ryt");
@@ -1408,16 +1420,20 @@ var app = (function () {
     			mount_component(projectname, div1, null);
     			append_dev(div1, t0);
     			append_dev(div1, button0);
-    			append_dev(button0, span);
+    			append_dev(button0, span0);
     			append_dev(div1, t1);
     			append_dev(div1, div0);
     			append_dev(div0, ul);
     			append_dev(ul, li);
     			append_dev(li, button1);
     			append_dev(button1, i0);
-    			append_dev(li, t2);
+    			append_dev(button1, t2);
+    			append_dev(button1, span1);
+    			append_dev(li, t4);
     			append_dev(li, button2);
     			append_dev(button2, i1);
+    			append_dev(button2, t5);
+    			append_dev(button2, span2);
     			current = true;
     		},
     		p: noop,
@@ -1505,6 +1521,18 @@ var app = (function () {
 
     var elementStore = writable(null);
 
+    function showWelcomeMessage(message){
+        console.log(
+            `%c${message}`,
+
+            `color: #df6b42;
+        font-family: system-ui;
+        font-size: 15px;
+        -webkit-text-stroke: 0.5px black;
+        font-weight: bold`
+        );
+    }
+
     function templateToHtml(htmlString){
         if(htmlString){
             const parsedHtml = new DOMParser().parseFromString(htmlString, "text/html");
@@ -1513,6 +1541,10 @@ var app = (function () {
         }
 
         return document.createElement("span");
+    }
+
+    function isBodyElement(element = {}){
+        return element.tagName == "BODY"
     }
 
     function getInsertPosition(dropzone, clientY){
@@ -1566,7 +1598,7 @@ var app = (function () {
 
         let dropZone = event.target;
 
-        const position = getInsertPosition(dropZone, event.clientY);
+        const position = isBodyElement(dropZone) ? "inside" : getInsertPosition(dropZone, event.clientY);
 
         addInsertPreview(dropZone, position);
     }
@@ -1583,7 +1615,7 @@ var app = (function () {
 
         event.dataTransfer.clearData();
 
-        const position = getInsertPosition(dropZone, event.clientY);
+        const position = isBodyElement(dropZone) ? "inside" : getInsertPosition(dropZone, event.clientY);
 
         const unsubscribe = elementStore.subscribe((elementsMap) => {
             const element = elementsMap.get(id);
@@ -1941,7 +1973,7 @@ var app = (function () {
     			name: "section",
     			display_name: "Section",
     			icon: "bi bi-square",
-    			template: "<section></section>"
+    			template: "<section builder-section></section>"
     		},
     		{
     			id: 2,
@@ -2828,24 +2860,24 @@ var app = (function () {
     			t2 = space();
     			label1 = element("label");
     			attr_dev(label0, "for", "toggle");
-    			add_location(label0, file$7, 60, 12, 1436);
+    			add_location(label0, file$7, 60, 12, 1438);
     			attr_dev(div0, "class", "col-6");
-    			add_location(div0, file$7, 59, 8, 1403);
+    			add_location(div0, file$7, 59, 8, 1405);
     			attr_dev(input, "type", "checkbox");
     			attr_dev(input, "id", "toggle");
-    			attr_dev(input, "class", "svelte-1d2rgl3");
-    			add_location(input, file$7, 64, 16, 1570);
+    			attr_dev(input, "class", "svelte-2vqqjm");
+    			add_location(input, file$7, 64, 16, 1572);
     			attr_dev(label1, "for", "toggle");
-    			attr_dev(label1, "class", "svelte-1d2rgl3");
-    			add_location(label1, file$7, 65, 16, 1678);
-    			attr_dev(div1, "class", "toggle svelte-1d2rgl3");
-    			add_location(div1, file$7, 63, 12, 1532);
+    			attr_dev(label1, "class", "svelte-2vqqjm");
+    			add_location(label1, file$7, 65, 16, 1680);
+    			attr_dev(div1, "class", "toggle svelte-2vqqjm");
+    			add_location(div1, file$7, 63, 12, 1534);
     			attr_dev(div2, "class", "col-6");
-    			add_location(div2, file$7, 62, 8, 1499);
+    			add_location(div2, file$7, 62, 8, 1501);
     			attr_dev(div3, "class", "form-group row");
-    			add_location(div3, file$7, 58, 4, 1365);
-    			attr_dev(section, "class", "svelte-1d2rgl3");
-    			add_location(section, file$7, 57, 0, 1350);
+    			add_location(div3, file$7, 58, 4, 1367);
+    			attr_dev(section, "class", "svelte-2vqqjm");
+    			add_location(section, file$7, 57, 0, 1352);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -3319,7 +3351,6 @@ var app = (function () {
     }
 
     /* src\editor\components\Preview\Preview.svelte generated by Svelte v3.32.1 */
-
     const file$a = "src\\editor\\components\\Preview\\Preview.svelte";
 
     function create_fragment$a(ctx) {
@@ -3340,11 +3371,11 @@ var app = (function () {
     			attr_dev(iframe_1, "frameborder", "0");
     			attr_dev(iframe_1, "allowtransparency", "true");
     			attr_dev(iframe_1, "class", "preview-window svelte-23ti04");
-    			add_location(iframe_1, file$a, 27, 8, 1021);
+    			add_location(iframe_1, file$a, 32, 8, 1207);
     			attr_dev(div0, "class", "preview-main svelte-23ti04");
-    			add_location(div0, file$a, 26, 4, 985);
+    			add_location(div0, file$a, 31, 4, 1171);
     			attr_dev(div1, "class", "col preview-holder svelte-23ti04");
-    			add_location(div1, file$a, 25, 0, 947);
+    			add_location(div1, file$a, 30, 0, 1133);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -3400,6 +3431,13 @@ var app = (function () {
     					$mainDocument.body.addEventListener("dragenter", event => onDragEnter(event));
     					$mainDocument.body.addEventListener("dragleave", event => onDragLeave(event));
     					clearInterval(timer);
+
+    					setTimeout(
+    						() => {
+    							showWelcomeMessage("Hi There 😃...");
+    						},
+    						1000
+    					);
     				}
     			},
     			2000
@@ -3418,6 +3456,7 @@ var app = (function () {
     		onDrop,
     		onDragEnter,
     		onDragLeave,
+    		showWelcomeMessage,
     		iframe,
     		$mainDocument
     	});
