@@ -11,8 +11,6 @@
     background-color: var(--main) !important;
     border-color: var(--main) !important;
     border-radius: 3px !important;
-    outline: none !important;
-    box-shadow: none !important;
 }
 
 .btn-main span{
